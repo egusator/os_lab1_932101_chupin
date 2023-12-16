@@ -1,11 +1,21 @@
 package org.example;
 
+import static java.lang.Thread.sleep;
+
 public class Monitor {
     public boolean ready;
-    public synchronized void provide()
-    {
+
+    public Monitor(boolean ready) {
+        this.ready = ready;
+    }
+
+    public synchronized void provide() throws InterruptedException {
+
         if (ready)
             return;
+
+        sleep(1000);
+
         ready = true;
         System.out.println("Инициировали событие");
         this.notify();

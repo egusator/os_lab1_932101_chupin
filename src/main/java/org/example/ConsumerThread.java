@@ -6,7 +6,7 @@ public class ConsumerThread extends Thread{
         try {
             monitor.consume();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            Thread.currentThread().interrupt();
         }
     }
 
