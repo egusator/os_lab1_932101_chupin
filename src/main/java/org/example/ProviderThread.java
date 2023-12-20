@@ -8,10 +8,13 @@ public class ProviderThread extends Thread {
     }
 
     public void run() {
-        try {
-            monitor.provide();
-        } catch (InterruptedException e){
-            Thread.currentThread().interrupt();
+        while (true) {
+            try {
+                sleep(1000);
+                monitor.provide();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 }

@@ -1,12 +1,15 @@
 package org.example;
 
-public class ConsumerThread extends Thread{
+public class ConsumerThread extends Thread {
     private Monitor monitor;
+
     public void run() {
-        try {
-            monitor.consume();
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        while (true) {
+            try {
+                monitor.consume();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 
