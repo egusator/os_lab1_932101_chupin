@@ -10,10 +10,8 @@ public class Monitor {
     }
 
     public synchronized void provide() throws InterruptedException {
-
         if (ready)
             return;
-        sleep(1000);
         ready = true;
         System.out.println("Инициировали событие");
         this.notify();
